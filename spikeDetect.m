@@ -28,8 +28,8 @@ persist_struct.(key).filtered_val_0 = filtered_val;
 en_STA = mean(persist_struct.(key).STA_arr.^2);
 en_LTA = mean(persist_struct.(key).LTA_arr.^2);
 
-
-ratio   = en_STA / en_LTA;
+epsilon = 1e-6;
+ratio   = en_STA / (en_LTA + epsilon);
 
 persist_struct.(key).STA_arr(1 : end - 1) = persist_struct.(key).STA_arr(2 : end);
 persist_struct.(key).LTA_arr(1 : end - 1) = persist_struct.(key).LTA_arr(2 : end);

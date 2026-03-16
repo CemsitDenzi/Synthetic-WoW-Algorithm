@@ -1,0 +1,33 @@
+  %% Test datas
+
+    ax = base_ax * ones(size(t)) + std_noise * randn(size(t));
+    ax(38/dt + 1 : 38/dt + 5) = base_ax + 5;
+    ax(38/dt + 6 : 38/dt + 12) = base_ax - 2;
+    ay = base_ax * ones(size(t)) + std_noise * randn(size(t));
+    az = base_ax * ones(size(t)) + std_noise * randn(size(t));
+    altitude = 400 * ones(size(t));
+    altitude(25/dt : end) = linspace(400, 0, length(25/dt : len));
+    vertical_speed = 200 * ones(size(t));
+    vertical_speed(25/dt : end) = linspace(200, 0, length(25/dt : len));
+    rear_wheel_speed = base_wheel_speed * ones(size(t)) + std_noise * randn(size(t));
+    % wheel_speed(25/dt + 2 : end) = linspace(base_wheel_speed, 150, length(25/dt + 2 : len));
+    rear_wheel_speed(38/dt + 1 : 38/dt + 5) = base_wheel_speed + 5;
+    rear_wheel_speed(38/dt + 6 : 38/dt + 12) = base_wheel_speed - 2;
+    front_wheel_speed = base_wheel_speed * ones(size(t)) + std_noise * randn(size(t));
+    % wheel_speed(25/dt + 2 : end) = linspace(base_wheel_speed, 150, length(25/dt + 2 : len));
+    front_wheel_speed(38/dt + 1 : 38/dt + 5) = base_wheel_speed + 5;
+    front_wheel_speed(38/dt + 6 : 38/dt + 12) = base_wheel_speed - 2;
+    rear_wheel_acc = zeros(size(rear_wheel_speed));
+    rear_wheel_acc(2:end) = diff(rear_wheel_speed)./dt;
+    rear_wheel_acc(1) = rear_wheel_acc(2);
+    front_wheel_acc = zeros(size(front_wheel_speed));
+    front_wheel_acc(2:end) = diff(front_wheel_speed)./dt;
+    front_wheel_acc(1) = front_wheel_acc(2);
+    air_speed = 100 * ones(size(t));
+    rear_wheel_acc_spike = zeros(size(t));
+    front_wheel_acc_spike = zeros(size(t));
+    ax_spike        = zeros(size(t));
+    alpha = 5 * ones(size(t));
+    alpha(25/dt + 20 : end) = linspace(5, 0, length(25/dt + 20 : len));
+    state = 1;
+    state_log = zeros(size(t));
