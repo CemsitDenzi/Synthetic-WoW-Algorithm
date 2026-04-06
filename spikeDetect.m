@@ -1,5 +1,11 @@
 function [spikeDetected,ratio] = spikeDetect(params,current_val,key)
 
+% Input parameters
+%params: Struct that contaion "LTA_win_size","STA_win_size","alpha" and "threshold" members
+%current_val : Current signal value 
+%key : ID given by user for tracking different signal
+
+
 persistent persist_struct;
 
 if isempty(persist_struct)

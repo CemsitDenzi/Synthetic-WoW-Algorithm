@@ -31,8 +31,8 @@
     %struct for spike detection function parameters
     %alpha : HPF coeff, LTA_win_size: Window size for LTA, 
     % STA: Window size for STA, threshold : Threshold for spike detection 
-    ax_params = struct('LTA_win_size',10/dt,'STA_win_size', 1/dt,'alpha', 0.98,'threshold',4);
-    rear_wheel_params = struct('LTA_win_size',10/dt,'STA_win_size', 1/dt,'alpha', 0.98,'threshold',4);
-    front_wheel_params = struct('LTA_win_size',10/dt,'STA_win_size', 1/dt,'alpha', 0.98,'threshold',4);
+    ax_params = struct('LTA_win_size',500/dt_ax,'STA_win_size', 100/dt_ax,'alpha', 0.88,'threshold',3.5);
+    rear_wheel_params = struct('LTA_win_size',500/dt_ax,'STA_win_size', 100/dt_ax,'alpha', 0.88,'threshold',3.5);
+    front_wheel_params = struct('LTA_win_size',500/dt_ax,'STA_win_size', 100/dt_ax,'alpha', 0.88,'threshold',3.5);
     dummy_hist = zeros(4, len); % For debugging
     landing_score = 0;
